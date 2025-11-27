@@ -1,7 +1,7 @@
 # Full-Stack Coding Challenge -- React + TypeScript + Node.js
 
 Thank you for participating in our coding challenge!
-Your goal is to build a small full-stack application using **React + TypeScript** on the frontend and **Node.js + Express** on the backend. The total time for this challenge is 1 hour that is 60 minutes.
+Your goal is to build a small full-stack application using **React + TypeScript** on the frontend and **Node.js + Express** on the backend. The total time for this challenge is 1 hour ( 60 minutes ).
 
 Please follow all requirements and submission instructions below.
 
