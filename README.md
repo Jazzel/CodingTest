@@ -40,12 +40,11 @@ This endpoint must:
 
 This endpoint must:
 
-a.  Implement **Levenshtein distance** *from scratch* (no external
-    distance libraries). See [Annexure](#annexure) at the end
+a.  Implement **Levenshtein distance** *from scratch* (no external distance libraries). See [Annexure](#annexure) at the end
 b.  For each user, compute similarity between:
     -   search term
     -   user.name
-c.  Sort results by similarity (descending)
+c.  Sort results by similarity (descending) 
 d.  Return the top 5 matches
 e.  Performance requirements:
     -   Must compute a single query in **\< 50ms** on average
