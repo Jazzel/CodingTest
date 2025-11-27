@@ -151,11 +151,11 @@ When a user is clicked, show their details on the right side:
 
 ## Deployment Instructions
 
-1.  Push code to GitHub\
-2.  Deploy via Vercel\
-3.  Ensure auto-deploy on push\
+1.  Push code to GitHub
+2.  Deploy via Vercel
+3.  Ensure auto-deploy on push
 4.  Submit:
-    -   GitHub repo link\
+    -   GitHub repo link
     -   Live Vercel link
 
 ------------------------------------------------------------------------
