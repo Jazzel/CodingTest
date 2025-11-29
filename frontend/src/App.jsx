@@ -9,6 +9,8 @@ function App() {
 
   const [column, setColumn] = useState("col-12");
 
+  const [favoriteUsers, setFavUsers] = useState([]);
+
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -40,13 +42,17 @@ function App() {
   };
 
   const markUserFavorite = async (user) => {
+    const favoriteUsers =
+      localStorage.getItem("users") === null
+        ? JSON.parse(localStorage.getItem("users"))
+        : [];
 
-    const favoriteUsers = localStorage.getItem("users")? JSON.parse(localStorage.getItem("users")) : [];
-    
+    favoriteUsers.push(user.id);
 
-    
-  
-  }
+    setFavUsers(favoriteUsers);
+
+    localStorage.setItem("users", JSON.stringify(favoriteUsers));
+  };
 
   return (
     <div className="container m-5">
@@ -80,6 +86,9 @@ function App() {
               <tbody>
                 {data.map((user) => (
                   <tr
+                    className={
+                      favoriteUsers.includes(user.id) ? "bg-warning" : ""
+                    }
                     key={user.id}
                     onClick={() => {
                       setSelectedUser(user);
@@ -90,7 +99,9 @@ function App() {
                     <td>{user.email}</td>
                     <td>{user.company?.name}</td>
                     <td>
-                      <button onClick={() => }>Mark favorite</button>
+                      <button onClick={() => markUserFavorite(user)}>
+                        Mark favorite
+                      </button>
                     </td>
                   </tr>
                 ))}
