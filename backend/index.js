@@ -1,6 +1,8 @@
 const express = require("express");
-
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
 
 const PORT = 3000;
 const IP = "localhost";
@@ -33,8 +35,6 @@ app.get("/api/users", async (req, res) => {
 
     const data = await request.json();
 
-    console.log(data);
-
     return res.status(200).json(data);
   } catch (error) {
     return res.status(404).json({ message: "Failed to fetch data" });
@@ -55,11 +55,16 @@ app.get("/api/search", async (req, res) => {
 
     const data = await request.json();
 
-    return res.status(200).json(
-      data.map((user) => {
-        user.similarityScore = levenshteinDistance(q.trim(), user.name);
-      })
-    );
+    const scored = data.map((user) => {
+      const score = levenshteinDistance(q.trim(), user.name);
+
+      return { ...user, score };
+    });
+
+    scored.sort((a, b) => b.score - a.score);
+
+    const top5 = score.slice(0, 5);
+    return res.status(200).json(top5);
   } catch (error) {
     return res.status(404).json({ message: "Failed to fetch data" });
   }
